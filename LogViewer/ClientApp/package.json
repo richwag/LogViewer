@@ -24,6 +24,8 @@
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
+    "@types/date-and-time": "^0.13.0",
+    "@types/react-bootstrap-table2-paginator": "^2.1.2",
     "ajv": "^6.9.1",
     "cross-env": "^5.2.0",
     "eslint": "^7.26.0",
