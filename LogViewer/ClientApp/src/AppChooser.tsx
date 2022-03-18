@@ -4,7 +4,6 @@ import { useGetApplications } from "./UseGetApplications";
 import { FieldError } from "./FieldError";
 import { useEnvironment } from "./EnvironmentProvider";
 
-
 // AppChooser
 export function AppChooser(props: { setApp: Function }) {
     const environment = useEnvironment();
@@ -14,11 +13,11 @@ export function AppChooser(props: { setApp: Function }) {
         if (applicationId !== "-1") {
             props.setApp(
                 apps.find(
-                    (a: Application) => a.ApplicationId.toString() === applicationId
+                    (a: Application) =>
+                        a.ApplicationId.toString() === applicationId
                 )
             );
-        }
-        else {
+        } else {
             props.setApp(undefined);
         }
     }
@@ -27,24 +26,31 @@ export function AppChooser(props: { setApp: Function }) {
         <>
             <label>Application</label>
             <div>
-                {!busy && !error && <select
-                    className="form-control"
-                    onChange={(e) => appChange(e.target.value)}
-                >
-                    {apps.map((a: Application) => (
-                        <option key={a.ApplicationId} value={a.ApplicationId}>
-                            {a.ApplicationName}
-                        </option>
-                    ))}
-                </select>}
-                {!!busy && <Spinner
-                    as="span"
-                    animation="border"
-                    size="sm"
-                    role="status"
-                    aria-hidden="true"
-                />}
-                <FieldError errorMessage="Can't load applications" show={!!error} />
+                {!busy && !error && (
+                    <select
+                        className="form-control"
+                        onChange={(e) => appChange(e.target.value)}
+                    >
+                        {apps.map((a: Application) => (
+                            <option
+                                key={a.ApplicationId}
+                                value={a.ApplicationId}
+                            >
+                                {a.ApplicationName}
+                            </option>
+                        ))}
+                    </select>
+                )}
+                {!!busy && (
+                    <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                    />
+                )}
+                {error && <FieldError errorMessage={error} show={!!error} />}
             </div>
         </>
     );
