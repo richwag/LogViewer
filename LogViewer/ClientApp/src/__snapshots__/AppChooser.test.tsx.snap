@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppChooser renders 1`] = `
+<div>
+  <label>
+    Application
+  </label>
+  <div>
+    <select
+      class="form-control"
+    >
+      <option
+        value="1"
+      >
+        application
+      </option>
+    </select>
+  </div>
+</div>
+`;
