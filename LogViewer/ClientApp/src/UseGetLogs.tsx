@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import config from "./config.json";
+import { config } from "./config";
 
 interface ApplicationLog {
     Message: string;
@@ -23,7 +23,9 @@ interface LogFilter {
     environment: string;
 }
 
-function useGetLogs(filter: LogFilter | undefined): [Array<ApplicationLog>, boolean, string | null] {
+function useGetLogs(
+    filter: LogFilter | undefined
+): [Array<ApplicationLog>, boolean, string | null] {
     const [logs, setLogs] = useState<Array<ApplicationLog>>([]);
     const [busy, setBusy] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -33,29 +35,32 @@ function useGetLogs(filter: LogFilter | undefined): [Array<ApplicationLog>, bool
             try {
                 setError(null);
                 setBusy(true);
-                const response = await fetch(`${config.server_prefix_url}ErrorManagement/ApplicationLogs`, {
-                    mode: "cors",
-                    method: "POST",
-                    credentials: "include",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(filter)
-                });
+                const response = await fetch(
+                    `${config.server_prefix_url}ErrorManagement/ApplicationLogs`,
+                    {
+                        mode: "cors",
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(filter),
+                    }
+                );
                 setBusy(false);
 
                 if (response.ok) {
                     var tempLogs = await response.json();
                     tempLogs.forEach((e: ApplicationLog) => {
                         e.DateTime = new Date(e.DateTimeUtc);
-                        e.FullErrorJson = e.FullErrorJson ? JSON.parse(e.FullErrorJson.replace("\r\n", "")) : e.FullErrorJson;
+                        e.FullErrorJson = e.FullErrorJson
+                            ? JSON.parse(e.FullErrorJson.replace("\r\n", ""))
+                            : e.FullErrorJson;
                     });
                     setLogs(tempLogs);
-                }
-                else {
+                } else {
                     throw Error("Can't get application logs");
                 }
-
             } catch (e) {
                 setBusy(false);
                 setError("error");

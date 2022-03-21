@@ -1,4 +1,7 @@
 {
-  "editor.formatOnSave": true,
-  "editor.formatOnType": true
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin/Release/net6.0/publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/c717b605-c26d-4b2d-8b78-0b1a742f29c0/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/RichWagenknechtLogViewer"
 }

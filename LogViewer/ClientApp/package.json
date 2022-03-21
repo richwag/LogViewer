@@ -56,7 +56,9 @@
         "build": "react-scripts build",
         "test": "cross-env CI=true react-scripts test --env=jsdom",
         "eject": "react-scripts eject",
-        "lint": "eslint ./src/"
+        "lint": "eslint ./src/",
+        "build:production": "env-cmd -f .env.production react-scripts build && shx rm -rf production && shx cp -r build production",
+        "start:production": "rimraf ./build && env-cmd -f .env.production react-scripts start"
     },
     "browserslist": {
         "production": [

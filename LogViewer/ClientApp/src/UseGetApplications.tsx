@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { Application } from "./Application";
-import config from "./config.json";
+import { config } from "./config";
 
-const pleaseChoose: Application = { ApplicationId: "-1", ApplicationName: "Please Choose" };
+const pleaseChoose: Application = {
+    ApplicationId: "-1",
+    ApplicationName: "Please Choose",
+};
 
-function useGetApplications(environment: string | null): [Array<Application>, boolean, string | null] {
+function useGetApplications(
+    environment: string | null
+): [Array<Application>, boolean, string | null] {
     const [apps, setApps] = useState<Array<Application>>([]);
     const [busy, setBusy] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -28,16 +33,16 @@ function useGetApplications(environment: string | null): [Array<Application>, bo
                 if (response.ok) {
                     var tmpApps: Array<Application> = await response.json();
                     tmpApps.sort((a, b) => {
-                        return a.ApplicationName.localeCompare(b.ApplicationName);
+                        return a.ApplicationName.localeCompare(
+                            b.ApplicationName
+                        );
                     });
                     tmpApps.splice(0, 0, pleaseChoose);
                     setApps(tmpApps);
+                } else {
+                    throw Error("Can't retrieve applications");
                 }
-                else {
-                    throw (Error("Can't retrieve applications"));
-                }
-            }
-            catch (e) {
+            } catch (e) {
                 setError("Can't retrieve applications");
                 setBusy(false);
             }
@@ -46,7 +51,7 @@ function useGetApplications(environment: string | null): [Array<Application>, bo
         if (environment !== null && environment.length) {
             fetchData();
         }
-    }, [environment])
+    }, [environment]);
 
     return [apps, busy, error];
 }

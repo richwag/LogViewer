@@ -1,7 +1,11 @@
 using LogViewer.LogViewer.Models;
 using LogViewer.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 
 // Add services to the container.
 builder.Services.AddTransient(typeof(IErrorManagementService), typeof(ErrorManagementService));
@@ -30,6 +34,12 @@ builder.Services.AddDbContext<ErrorContext>();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var dataContext = scope.ServiceProvider.GetRequiredService<ErrorContext>();
+    dataContext.Database.Migrate();
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -41,6 +51,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseCors("ErrorManagement");
+
+
 
 app.MapControllerRoute(
     name: "default",

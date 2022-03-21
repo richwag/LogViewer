@@ -4,11 +4,11 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["LogViewer/LogViewer.csproj", "LogViewer/"]
-RUN dotnet restore "LogViewer/LogViewer.csproj"
+WORKDIR /src-
+COPY ["./LogViewer.csproj", "./"]
+RUN dotnet restore "./LogViewer.csproj"
 COPY . .
-WORKDIR "/src/LogViewer"
+
 RUN dotnet build "LogViewer.csproj" -c Release -o /app/build
 
 FROM build AS publish
