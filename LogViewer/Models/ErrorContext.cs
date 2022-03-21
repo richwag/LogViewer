@@ -31,7 +31,7 @@ namespace LogViewer.LogViewer.Models
             }
         }
 
-        protected override async void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Application>(entity =>
             {
