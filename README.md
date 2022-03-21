@@ -7,7 +7,6 @@ The client is a reactjs/typescript app. The backend is a dotnet core webapi conn
 
 This app was developed in VSCode.
 
-To run it, get the respository. Open a terminal window and run dotnet ef database update to create and seed the initial database.
-Then just run it from VSCode. 
+To run it, get the respository and build. The database will be created and seeded on app startup.
 
 
