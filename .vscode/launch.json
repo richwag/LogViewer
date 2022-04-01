@@ -8,10 +8,12 @@
             "name": "Debug Tests Single Run",
             "type": "node",
             "request": "launch",
-            "env": { "CI": "true" },
-            "runtimeExecutable": "${workspaceRoot}/ClientApp/node_modules/.bin/react-scripts",
+            "env": {
+                "CI": "true"
+            },
+            "runtimeExecutable": "${workspaceRoot}/LogViewer/ClientApp/node_modules/.bin/react-scripts",
             "args": ["test", "--runInBand", "--no-cache"],
-            "cwd": "${workspaceRoot}/ClientApp",
+            "cwd": "${workspaceRoot}/LogViewer/ClientApp",
             "protocol": "inspector",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
@@ -20,9 +22,9 @@
             "name": "Debug tests watch mode",
             "type": "node",
             "request": "launch",
-            "runtimeExecutable": "${workspaceRoot}/ClientApp/node_modules/.bin/react-scripts",
+            "runtimeExecutable": "${workspaceRoot}/LogViewer/ClientApp/node_modules/.bin/react-scripts",
             "args": ["test", "--runInBand", "--no-cache", "--watchAll"],
-            "cwd": "${workspaceRoot}/ClientApp",
+            "cwd": "${workspaceRoot}/LogViewer/ClientApp",
             "protocol": "inspector",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
@@ -31,7 +33,7 @@
             "name": "Debug tests opened file",
             "type": "node",
             "request": "launch",
-            "runtimeExecutable": "${workspaceRoot}/node_modules/ClientApp/.bin/react-scripts",
+            "runtimeExecutable": "${workspaceRoot}/LogViewer/node_modules/ClientApp/.bin/react-scripts",
             "args": [
                 "test",
                 "${fileBasenameNoExtension}",
@@ -39,7 +41,7 @@
                 "--no-cache",
                 "--watchAll"
             ],
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceRoot}/LogViewer",
             "protocol": "inspector",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
@@ -49,9 +51,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/bin/Debug/net6.0/logviewer.dll",
+            "program": "${workspaceFolder}/LogViewer/bin/Debug/net6.0/logviewer.dll",
             "args": [],
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/LogViewer",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
@@ -61,7 +63,19 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
             "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
+                "/Views": "${workspaceFolder}/LogViewer/Views"
+            }
+        },
+        {
+            "name": "Docker .NET Core Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Production"
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/LogViewer/LogViewer.csproj"
             }
         }
     ]

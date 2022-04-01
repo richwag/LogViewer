@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/LogViewer.csproj",
+                "${workspaceFolder}/LogViewer/LogViewer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/LogViewer.csproj",
+                "${workspaceFolder}/LogViewer/LogViewer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/LogViewer.csproj"
+                "${workspaceFolder}/LogViewer/LogViewer.csproj"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -43,26 +43,11 @@
             "type": "process",
             "args": [
                 "clean",
-                "${workspaceFolder}",
+                "${workspaceFolder}/LogViewer",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publish-release",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}",
-                "--configuration",
-                "Release",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile",
-            "dependsOn": "clean"
         }
     ]
 }
