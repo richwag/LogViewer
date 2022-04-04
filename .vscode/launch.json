@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Docker .NET Core Attach (Preview)",
+            "type": "docker",
+            "request": "attach",
+            "platform": "netCore",
+            "sourceFileMap": {
+                "/src": "${workspaceFolder}"
+            }
+        },
+        {
             "name": "Debug Tests Single Run",
             "type": "node",
             "request": "launch",
@@ -12,7 +21,11 @@
                 "CI": "true"
             },
             "runtimeExecutable": "${workspaceRoot}/LogViewer/ClientApp/node_modules/.bin/react-scripts",
-            "args": ["test", "--runInBand", "--no-cache"],
+            "args": [
+                "test",
+                "--runInBand",
+                "--no-cache"
+            ],
             "cwd": "${workspaceRoot}/LogViewer/ClientApp",
             "protocol": "inspector",
             "console": "integratedTerminal",
@@ -23,7 +36,12 @@
             "type": "node",
             "request": "launch",
             "runtimeExecutable": "${workspaceRoot}/LogViewer/ClientApp/node_modules/.bin/react-scripts",
-            "args": ["test", "--runInBand", "--no-cache", "--watchAll"],
+            "args": [
+                "test",
+                "--runInBand",
+                "--no-cache",
+                "--watchAll"
+            ],
             "cwd": "${workspaceRoot}/LogViewer/ClientApp",
             "protocol": "inspector",
             "console": "integratedTerminal",
@@ -66,17 +84,6 @@
                 "/Views": "${workspaceFolder}/LogViewer/Views"
             }
         },
-        {
-            "name": "Docker .NET Core Launch",
-            "type": "docker",
-            "request": "launch",
-            "preLaunchTask": "docker-run: debug",
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Production"
-            },
-            "netCore": {
-                "appProject": "${workspaceFolder}/LogViewer/LogViewer.csproj"
-            }
-        }
+
     ]
 }
