@@ -14,3 +14,4 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
+
