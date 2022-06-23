@@ -1,8 +1,8 @@
 import { Spinner } from "react-bootstrap";
-import { Application } from "./Application";
-import { useGetApplications } from "./UseGetApplications";
+import { useGetApplications } from "../data-fetch/UseGetApplications";
+import { Application } from "../data-types/Application";
+import { useEnvironment } from "../EnvironmentProvider";
 import { FieldError } from "./FieldError";
-import { useEnvironment } from "./EnvironmentProvider";
 
 // AppChooser
 export function AppChooser(props: { setApp: Function }) {
@@ -28,6 +28,7 @@ export function AppChooser(props: { setApp: Function }) {
             <div>
                 {!busy && !error && (
                     <select
+                        title="Choose an application"
                         className="form-control"
                         onChange={(e) => appChange(e.target.value)}
                     >

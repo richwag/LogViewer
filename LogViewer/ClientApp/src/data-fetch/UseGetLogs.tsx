@@ -1,27 +1,7 @@
 import { useEffect, useState } from "react";
-import { config } from "./config";
-
-interface ApplicationLog {
-    Message: string;
-    MessageTypeId: string;
-    DateTimeUtc: string;
-    FullErrorJson: string;
-    CurrentUserName: string;
-    Host: string;
-    DateTime: Date;
-}
-
-interface LogFilter {
-    applicationId: string;
-    messageTypes: string;
-    messageContains: string;
-    hostContains: string;
-    errorJsonContains: string;
-    userContains: string;
-    page: number;
-    pageSize: number;
-    environment: string;
-}
+import { config } from "../config";
+import { ApplicationLog } from "../data-types/ApplicationLog";
+import { LogFilter } from "../data-types/LogFilter";
 
 function useGetLogs(
     filter: LogFilter | undefined
@@ -79,5 +59,4 @@ function useGetLogs(
 }
 
 export { useGetLogs };
-
 export type { LogFilter, ApplicationLog };

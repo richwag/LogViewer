@@ -1,11 +1,11 @@
+import date from "date-and-time";
 import BootstrapTable, { ColumnDescription } from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
-import date from "date-and-time";
-import { useGetMessageTypes } from "./UseGetMessageTypes";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { ApplicationLog } from "./UseGetLogs";
-import { useEnvironment } from "./EnvironmentProvider";
+import { useGetMessageTypes } from "../data-fetch/UseGetMessageTypes";
+import { ApplicationLog } from "../data-types/ApplicationLog";
+import { useEnvironment } from "../EnvironmentProvider";
 
 function LogDisplay({
     logs,

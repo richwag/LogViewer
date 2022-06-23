@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useSetEnvironment } from "./EnvironmentProvider";
-import { config } from "./config";
+import { config } from "../config";
+import { useSetEnvironment } from "../EnvironmentProvider";
 
 export function EnvironmentChooser() {
     const setEnvironment = useSetEnvironment();
@@ -47,6 +47,7 @@ export function EnvironmentChooser() {
             <label>Environment</label>
             <div>
                 <select
+                    title="Choose an environment"
                     className="form-control"
                     onChange={(e) => environmentChange(e.target.value)}
                 >

@@ -1,5 +1,5 @@
+import LogViewer from "./components/LogViewer";
 import { EnvironmentContextProvider } from "./EnvironmentProvider";
-import LogViewer from "./LogViewer";
 
 function App() {
     return (

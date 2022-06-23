@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Application } from "./Application";
-import { config } from "./config";
+import { config } from "../config";
+import { Application } from "../data-types/Application";
 
 const pleaseChoose: Application = {
     ApplicationId: "-1",

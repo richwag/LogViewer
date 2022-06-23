@@ -1,9 +1,8 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { AppChooser } from "./AppChooser";
-import { Application } from "./Application";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import * as hooks from "./UseGetApplications";
+import { AppChooser } from "../components/AppChooser";
+import * as hooks from "../data-fetch/UseGetApplications";
+import { Application } from "../data-types/Application";
 
 const mockApps: Array<Application> = [
     {
