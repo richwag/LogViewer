@@ -97,44 +97,39 @@ function LogViewer() {
                     />
                 </div>
                 <div className="form-group">
-                    <label>
-                        Message contains:
-                        <input
-                            className="form-control"
-                            type="text"
-                            onChange={(e) => setMessageContains(e.target.value)}
-                        ></input>
-                    </label>
-                    <label>
-                        User contains:{" "}
-                        <input
-                            className="form-control"
-                            type="text"
-                            onChange={(e) => setUserContains(e.target.value)}
-                            value={userContains}
-                        ></input>
-                    </label>
+                    <label htmlFor="messageContains">Message contains:</label>
+                    <input
+                        id="messageContains"
+                        className="form-control"
+                        type="text"
+                        onChange={(e) => setMessageContains(e.target.value)}
+                    ></input>
+                    <label htmlFor="userContains">User contains: </label>
+                    <input
+                        id="userContains"
+                        className="form-control"
+                        type="text"
+                        onChange={(e) => setUserContains(e.target.value)}
+                        value={userContains}
+                    ></input>
+                    <label htmlFor="hostContains">Host contains: </label>
+                    <input
+                        className="form-control"
+                        id="hostContains"
+                        type="text"
+                        onChange={(e) => setHostContains(e.target.value)}
+                        value={hostContains}
+                    ></input>
 
-                    <label>
-                        Host contains:{" "}
-                        <input
-                            className="form-control"
-                            type="text"
-                            onChange={(e) => setHostContains(e.target.value)}
-                            value={hostContains}
-                        ></input>
-                    </label>
-
-                    <label>
+                    <label htmlFor="errorJsonContains">
                         Error Json contains:{" "}
-                        <input
-                            className="form-control"
-                            type="text"
-                            onChange={(e) =>
-                                setErrorJsonContains(e.target.value)
-                            }
-                        ></input>
                     </label>
+                    <input
+                        id="errorJsonContains"
+                        className="form-control"
+                        type="text"
+                        onChange={(e) => setErrorJsonContains(e.target.value)}
+                    ></input>
                 </div>
                 <Alert
                     show={showToast}
